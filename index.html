@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>leaflet.js - introduction</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="../assets/leafletjs/leaflet.css" />
+        <script src="../assets/leafletjs/leaflet.js"></script>
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Leaflet.js</h1>
+                    <h3>Introduction for <a href="http://twitter.com/JSLuxembourg">@JSLuxembourg</a></h3>
+                    <p>
+                        <small>By <a href="http://www.williambrownstreet.net/blog">Thierry Nicola</a> / <a href="http://eevol.lu">eevol.lu</a> / <a href="http://twitter.com/littleiffel">@littleiffel</a></small>
+                    </p>
+				</section>
+
+                <section>
+                    <h2>Disclaimer</h2>
+                    <p>
+                        No Kittens where harmed in the creation of these slides
+                    </p>
+
+                </section>
+
+				<section>
+					<h2>Be prepared to...</h2>
+                    <ul>
+                        <li>You said leaflet</li>
+                        <li>Get a map</li>
+                        <li>You said API-what</li>
+                        <li>Geo J S O N</li>
+                        <li>Plug in(s) baby</li>
+                    </ul>
+
+					<!-- <aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside> -->
+				</section>
+
+                <section>
+                    <h2>What is leaflet.js</h2>
+                    <blockquote cite="http://leafletjs.com">
+                        &ldquo;An Open-Source JavaScript Library for Mobile-Friendly Interactive Maps&rdquo;
+                    </blockquote>
+                    <a href="http://leafletjs.com">LeafletJS.com</a>
+                    <p>
+                        Contribute on <a href="https://github.com/Leaflet/Leaflet">GitHub</a>, Follow on <a href="http://twitter.com/leafletjs">Twitter</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>built by</h2>
+                    <p>
+                        <a href="http://agafonkin.com/en/">Vladimir Agafonkin</a> works at MapBox.com
+                    </p>
+                    <p>
+                        He is online <a href="http://github.com/mourner">Github</a>, <a href="http://twitter.com/mourner">@mourner</a>
+                    </p>
+
+                </section>
+
+                <section>
+                    <h2>Features</h2>
+                    <small>
+                        <span class="fragment">Extremely lightweight — around 34 KB of gzipped JS code</span>
+                        <span class="fragment">, No external dependencies</span>
+                        <span class="fragment">, Tile layers</span>
+                        <span class="fragment">, Drag panning with inertia</span>
+                        <span class="fragment">, Multi-touch support</span>
+                        <span class="fragment">, GeoJson Layers</span>
+                        <span class="fragment">, Markers (custom markers support)</span>
+                        <span class="fragment">, Popups</span>
+                        <span class="fragment">, Pure CSS3 popups and controls (easy Styling)</span>
+                        <span class="fragment">, Use any map Provider (OSM, MapBox, Google, ...) (almost everyone)</span>
+                        <span class="fragment">, Browser Support works in IE7</span>
+                        <span class="fragment">, <b>Open Source</b></span>
+                        <span class="fragment">, Vector layers, Image Layers, WMS Layers, Layer Groups, Scroll wheel zoom, Double click zoom, Zoom to area (shift-drag), Keyboard navigation, Multi-touch zoom, Double tap zoom, Marker dragging, Zoom animation (for all layers, including tile layers, markers and vector layers), Panning animation, Smooth continuous zoom on modern mobile devices, Tile and popup fade animation, Very nice default design for markers, popups and other map controls, Retina resolution support for tile layers and markers,</span>
+                        <span class="fragment">, ...and others</span>
+                    </small>
+                    <p class="fragment">
+                        <a href="http://leafletjs.com/features.html">List them all</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Hey..Stop it! You can read that stuff on your own...</h2>
+                    <p class="fragment">
+                        Where is the sexy code!
+                    </p>
+                </section>
+
+                <section>
+                    <h2>LeaftJS - Let's get Started</h2>
+                    <p class="fragment">Attention! Live coding</p>
+                </section>
+
+                <section>
+                    <h2>The first time</h2>
+
+                    <div class="">
+                        <iframe id="thefirstmap" src="demo.html" style="width:100%; height:380px;">
+
+                        </iframe>
+                    </div>
+                    <pre>
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
+var map = L.map('map', {
+    center: [49, 6],
+    zoom: 13
+});
+L.tileLayer('http://a.tiles.mapbox.com/v3/eevol.h0194mcj/{z}/{x}/{y}.png', {
+
+}).addTo(map);
+// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+//    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+// }).addTo(map);
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Basic Elements</h2>
+
+                    <div >
+                        <iframe id="basicelements" src="demo.html" style="width:100%; height:380px;">
+
+                        </iframe>
+                    </div>
+                    <pre>
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
+var marker = L.marker([49, 5.49]).addTo(map);
+var polygon = L.polygon([
+    [51.509, -0.08],
+    [51.503, -0.06],
+    [51.51, -0.047]
+]).addTo(map);
+marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+polygon.bindPopup("I am a polygon.");
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Royale with Cheese (& Layers)</h2>
+
+                    <div >
+                        <iframe id="layers" src="demo.html" style="width:100%; height:380px;">
+
+                        </iframe>
+                    </div>
+                    <div class="stretch">
+                    <pre>
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
+var mapbox   = L.tileLayer('http://a.tiles.mapbox.com/v3/eevol.h0194mcj/{z}/{x}/{y}.png'),
+    osm  = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    });
+
+var map = L.map('map', {
+    center: new L.LatLng(49.72, 6.13),
+    zoom: 10,
+    layers: [mapbox, osm]
+});
+var maps = {
+    "MapBox.com": mapbox,
+    "OSM": osm
+};
+var controlLayers = L.control.layers(maps).addTo(map);
+
+var amazon     = L.marker([49.72, 6.134]).bindPopup('YOU ARE HERE'),
+    skype    = L.marker([49.74, 6.137]).bindPopup('The app next door');
+
+var markers = L.layerGroup([amazon, skype]);
+controlLayers.addOverlay(markers, "Markers");
+map.removeLayer(osm);
+                        </code>
+                    </pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Where were we?</h2>
+
+                    <div >
+                        <iframe id="wherewerewe" src="demo.html" style="width:100%; height:380px;">
+
+                        </iframe>
+                    </div>
+                    <pre>
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
+map.getCenter();
+map.getBounds();
+map.getZoom();
+map.getPixelBounds();
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Control the map</h2>
+
+                    <div >
+                        <iframe id="controlthemap" src="demo.html" style="width:100%; height:380px;">
+
+                        </iframe>
+                    </div>
+                    <pre>
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
+map.setView(L.latLng(50, 30), 5);
+var popup = L.popup().setLatLng([51.5, -0.09]).setContent("I am a standalone popup.").openOn(map);
+L.control.scale().addTo(map);
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Can you hear me?</h2>
+
+                    <div >
+                        <iframe id="canyouhearme" src="demo.html" style="width:100%; height:380px;">
+
+                        </iframe>
+                    </div>
+                    <pre>
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
+function onClickMap(e){
+    console.log(e);
+}
+map.on('click', onClickMap); // Listen to Click on Map
+map.off('click', onClickMap); // Remove event Listener
+
+var popup = L.popup();
+
+function onMapDblClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
+
+map.on('dblClick', onMapDblClick);
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>LeaftJS - GeoJSON</h2>
+                    <p class="fragment">If you made it this far...</p>
+                </section>
+
+
+                <section>
+                    <h2>GeoJ S O N</h2>
+
+                    <div >
+                        <iframe id="geojson" src="demo.html" style="width:100%; height:380px;">
+
+                        </iframe>
+                    </div>
+                    <pre>
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
+var myLines = [{
+    "type": "LineString",
+    "coordinates": [[-100, 40], [-105, 45], [-110, 55]]
+}, {
+    "type": "LineString",
+    "coordinates": [[-105, 40], [-110, 45], [-115, 55]]
+}];
+
+var myStyle = {
+    "color": "#ff7800",
+    "weight": 5,
+    "opacity": 0.65
+};
+
+L.geoJson(myLines, {
+    style: myStyle
+}).addTo(map);
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>LeaftJS - Plugins</h2>
+                    <p class="fragment">...almost...</p>
+                </section>
+
+                <section>
+                    <h2>Plug ins Baby</h2>
+                    <ul>
+                        <li><a href="http://leaflet.github.io/Leaflet.markercluster/example/marker-clustering-custom.html">MarkerClusterer</a></li>
+                        <li><a href="http://norkart.github.io/Leaflet-MiniMap/example.html"></a>MiniMap</li>
+                        <li><a href="http://ursudio.com/webgl-heatmap-leaflet/">HeatMap WebGL</a></li>
+                        <li><a href="http://leafletjs.com/plugins.html">any many more</a></li>
+                    </ul>
+                </section>
+
+
+				<section>
+					<h2>Stellar Links</h2>
+					<ul>
+						<li><a href="https://github.com/benbalter/dc-wifi-social/blob/master/bars.geojson">GeoJSON Example on GitHub</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3></h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                touch:true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
