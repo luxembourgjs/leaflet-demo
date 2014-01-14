@@ -131,7 +131,7 @@
                     <h2>The first time</h2>
 
                     <div class="">
-                        <iframe id="thefirstmap" src="demo.html" style="width:100%; height:380px;">
+                        <iframe id="thefirstmap" src="demo1.html" style="width:100%; height:380px;">
 
                         </iframe>
                     </div>
@@ -155,7 +155,7 @@ L.tileLayer('http://a.tiles.mapbox.com/v3/eevol.h0194mcj/{z}/{x}/{y}.png', {
                     <h2>Basic Elements</h2>
 
                     <div >
-                        <iframe id="basicelements" src="demo.html" style="width:100%; height:380px;">
+                        <iframe id="basicelements" src="demo2.html" style="width:100%; height:380px;">
 
                         </iframe>
                     </div>
@@ -177,7 +177,7 @@ polygon.bindPopup("I am a polygon.");
                     <h2>Royale with Cheese (& Layers)</h2>
 
                     <div >
-                        <iframe id="layers" src="demo.html" style="width:100%; height:380px;">
+                        <iframe id="layers" src="demo3.html" style="width:100%; height:380px;">
 
                         </iframe>
                     </div>
@@ -219,6 +219,9 @@ map.removeLayer(osm);
 
                         </iframe>
                     </div>
+                    <p>
+                        Execute this code in Console for iframe 'wherewerewe'
+                    </p>
                     <pre>
                         <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
 map.getCenter();
@@ -237,6 +240,9 @@ map.getPixelBounds();
 
                         </iframe>
                     </div>
+                                        <p>
+                        Execute this code in Console for iframe 'controlthemap'
+                    </p>
                     <pre>
                         <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
 map.setView(L.latLng(50, 30), 5);
@@ -250,28 +256,31 @@ L.control.scale().addTo(map);
                     <h2>Can you hear me?</h2>
 
                     <div >
-                        <iframe id="canyouhearme" src="demo.html" style="width:100%; height:380px;">
+                        <iframe id="canyouhearme" src="demo4.html" style="width:100%; height:380px;">
 
                         </iframe>
                     </div>
+                    <p>
+                        Click the map to log Event, and Double Click to get Position
+                    </p>
                     <pre>
                         <code data-trim contenteditable style="font-size: 18px; margin-top: 10px;">
 function onClickMap(e){
     console.log(e);
 }
 map.on('click', onClickMap); // Listen to Click on Map
-map.off('click', onClickMap); // Remove event Listener
+//map.off('click', onClickMap); // Remove event Listener
 
 var popup = L.popup();
 
 function onMapDblClick(e) {
     popup
         .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
+        .setContent("You clicked the map at " + e.latlng.toString() )
         .openOn(map);
 }
 
-map.on('dblClick', onMapDblClick);
+map.on('dblclick', onMapDblClick);
                         </code>
                     </pre>
                 </section>
@@ -286,7 +295,7 @@ map.on('dblClick', onMapDblClick);
                     <h2>GeoJ S O N</h2>
 
                     <div >
-                        <iframe id="geojson" src="demo.html" style="width:100%; height:380px;">
+                        <iframe id="geojson" src="demo5.html" style="width:100%; height:380px;">
 
                         </iframe>
                     </div>
@@ -338,7 +347,7 @@ L.geoJson(myLines, {
 
 				<section>
 					<h1>THE END</h1>
-					<h3></h3>
+
 				</section>
 
 			</div>
