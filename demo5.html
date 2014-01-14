@@ -27,14 +27,61 @@
             &lt;div id="map"&gt;&lt;/div&gt;
         </div>
         <script>
-            // Example 1 - Create a simple map
-            var map = L.map('map', {
-                center: [49, 6],
-                zoom: 13
-            });
-            L.tileLayer('http://a.tiles.mapbox.com/v3/eevol.h0194mcj/{z}/{x}/{y}.png', {
+            var mapbox   = L.tileLayer('http://a.tiles.mapbox.com/v3/eevol.h0194mcj/{z}/{x}/{y}.png'),
+                osm  = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                });
 
-            }).addTo(map);
+            var map = L.map('map', {
+                center: new L.LatLng(49.72, 6.13),
+                zoom: 2,
+                layers: [mapbox, osm]
+            });
+            var maps = {
+                "MapBox.com": mapbox,
+                "OSM": osm
+            };
+            var controlLayers = L.control.layers(maps).addTo(map);
+
+            var amazon     = L.marker([49.72, 6.134]).bindPopup('YOU ARE HERE'),
+                skype    = L.marker([49.74, 6.137]).bindPopup('The app next door');
+
+            var markers = L.layerGroup([amazon, skype]);
+            controlLayers.addOverlay(markers, "Markers");
+            map.removeLayer(osm);
+            function onClickMap(e){
+    console.log(e);
+}
+map.on('click', onClickMap); // Listen to Click on Map
+//map.off('click', onClickMap); // Remove event Listener
+
+var popup = L.popup();
+
+function onMapDblClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
+
+map.on('dblclick', onMapDblClick);
+var myLines = [{
+    "type": "LineString",
+    "coordinates": [[-100, 40], [-105, 45], [-110, 55]]
+}, {
+    "type": "LineString",
+    "coordinates": [[-105, 40], [-110, 45], [-115, 55]]
+}];
+
+var myStyle = {
+    "color": "#ff7800",
+    "weight": 5,
+    "opacity": 0.65
+};
+
+L.geoJson(myLines, {
+    style: myStyle
+}).addTo(map);
             // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             //    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             // }).addTo(map);
