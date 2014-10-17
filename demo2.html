@@ -32,9 +32,13 @@
                 center: [49, 6],
                 zoom: 13
             });
-            L.tileLayer('http://a.tiles.mapbox.com/v3/eevol.h0194mcj/{z}/{x}/{y}.png', {
-
+            var Stamen_Toner = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                subdomains: 'abcd',
+                minZoom: 0,
+                maxZoom: 20
             }).addTo(map);
+            
             var marker = L.marker([49, 5.49]).addTo(map);
             var polygon = L.polygon([
                 [51.509, -0.08],
