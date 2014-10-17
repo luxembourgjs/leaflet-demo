@@ -27,7 +27,12 @@
             &lt;div id="map"&gt;&lt;/div&gt;
         </div>
         <script>
-            var mapbox   = L.tileLayer('http://a.tiles.mapbox.com/v3/eevol.h0194mcj/{z}/{x}/{y}.png'),
+            var mapbox   =  L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                subdomains: 'abcd',
+                minZoom: 0,
+                maxZoom: 20
+            }),
                 osm  = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 });
